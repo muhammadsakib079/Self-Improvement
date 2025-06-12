@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সফল জীবনের জন্য আত্মচুক্তিপত্র - ইনফোগ্রাফিক</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #e5e7eb;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-left: 20px;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-right: 20px;
+        }
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+         .timeline-icon {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border: 4px solid #e5e7eb;
+            border-radius: 50%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+         .timeline-item:nth-child(odd) .timeline-icon {
+            right: -25px;
+            left: auto;
+        }
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -25px;
+            right: auto;
+        }
+        .modal-backdrop {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">সফল জীবনের জন্য আত্মচুক্তিপত্র</h1>
+            <p class="text-xl text-gray-600">মোঃ সাকিব-এর ব্যক্তিগত ইনফোগ্রাফিক</p>
+            <p class="text-md text-gray-500 mt-2">চুক্তির তারিখ: ১২ জুন ২০২৫</p>
+        </header>
+        
+        <div class="card text-center">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600">✨ চুক্তির উদ্দেশ্য</h2>
+            <p class="text-lg leading-relaxed max-w-3xl mx-auto">
+                এই আত্মচুক্তি আমার জীবনে সফলতা, নৈতিকতা, আল্লাহর সন্তুষ্টি ও আত্মশুদ্ধির লক্ষ্যে গৃহীত। অতীতের ভুল থেকে শিক্ষা নিয়ে আমি একটি আত্মনিয়ন্ত্রিত, প্রগতিশীল, ইসলামিক মূল্যবোধভিত্তিক ও লক্ষ্যনির্ভর জীবন গঠনের জন্য ৫২টি ধারায় নিজেকে পরিচালিত করার অঙ্গীকার করছি।
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center mb-12">
+            <div class="md:col-span-3 card">
+                 <h3 class="text-xl font-semibold text-center mb-4">প্রতিশ্রুতির ভারসাম্য</h3>
+                 <p class="text-center text-gray-600 mb-4">চুক্তির ৫২টি ধারা দুটি প্রধান অংশে বিভক্ত: ২৫টি নিষেধাজ্ঞা এবং ২৭টি করণীয় কাজ। এই চার্টটি দুটি অংশের মধ্যে ভারসাম্য প্রদর্শন করে।</p>
+                 <div class="chart-container">
+                    <canvas id="commitmentBalanceChart"></canvas>
+                </div>
+            </div>
+            <div class="md:col-span-2 text-center space-y-6">
+                <div class="card p-6 bg-red-100 border-l-4 border-red-500">
+                     <p class="text-2xl font-bold text-red-700">২৫ টি</p>
+                     <h3 class="text-lg font-semibold text-red-600">নিষেধাজ্ঞা</h3>
+                </div>
+                 <div class="card p-6 bg-green-100 border-l-4 border-green-500">
+                     <p class="text-2xl font-bold text-green-700">২৭ টি</p>
+                     <h3 class="text-lg font-semibold text-green-600">করণীয় ও উত্তম অভ্যাস</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="card">
+                <h3 class="text-2xl font-bold text-center mb-4 text-red-600">🔴 প্রথম অংশ: নিষেধাজ্ঞাসমূহ</h3>
+                <ul class="space-y-3 list-inside">
+                    <li><span class="font-bold text-red-500 mr-2">১.</span>হারাম বিনোদন ও পর্নোগ্রাফি বর্জন।</li>
+                    <li><span class="font-bold text-red-500 mr-2">২.</span>অবৈধ সম্পর্ক ও মোবাইল আসক্তি পরিহার।</li>
+                    <li><span class="font-bold text-red-500 mr-2">৩.</span>অপ্রয়োজনীয় ভিডিও ও গেমিং ত্যাগ।</li>
+                    <li><span class="font-bold text-red-500 mr-2">৪.</span>রাত জাগা এবং দেরিতে ঘুমানো পরিহার।</li>
+                    <li><span class="font-bold text-red-500 mr-2">৫.</span>ফজরের সালাত কাজা না করা।</li>
+                    <li><span class="font-bold text-red-500 mr-2">৬.</span>গণতান্ত্রিক রাজনীতিতে যোগ না দেওয়া।</li>
+                    <li><span class="font-bold text-red-500 mr-2">৭.</span>মিথ্যা, গীবত, হিংসা ও অহংকার নিয়ন্ত্রণ।</li>
+                    <li><span class="font-bold text-red-500 mr-2">৮.</span>মা-বাবার অবাধ্যতা না করা।</li>
+                    <li><span class="font-bold text-red-500 mr-2">৯.</span>সময় নষ্ট ও অলসতা ত্যাগ করা।</li>
+                    <li><span class="font-bold text-red-500 mr-2">১০.</span>স্বাস্থ্য ও ইবাদতে অবহেলা না করা।</li>
+                </ul>
+                <button id="openProhibitionsModal" class="text-center mt-4 text-sm text-blue-600 hover:underline cursor-pointer w-full">(এবং আরও ১৫টি ধারা...)</button>
+            </div>
+            <div class="card">
+                <h3 class="text-2xl font-bold text-center mb-4 text-green-600">🟢 দ্বিতীয় অংশ: করণীয় অভ্যাসসমূহ</h3>
+                <ul class="space-y-3 list-inside">
+                    <li><span class="font-bold text-green-500 mr-2">২৬.</span>পাঁচ ওয়াক্ত সালাত ও কুরআন তেলাওয়াত।</li>
+                    <li><span class="font-bold text-green-500 mr-2">২৭.</span>স্কিল ডেভেলপমেন্টে ২-৪ ঘণ্টা ব্যয়।</li>
+                    <li><span class="font-bold text-green-500 mr-2">২৮.</span>একাডেমিক পড়াশোনায় ২-৩ ঘণ্টা ব্যয়।</li>
+                    <li><span class="font-bold text-green-500 mr-2">২৯.</span>বিসিএস ও ক্যারিয়ার প্রস্তুতিতে ২-৩ ঘণ্টা ব্যয়।</li>
+                    <li><span class="font-bold text-green-500 mr-2">৩০.</span>ফজরের পূর্বে ঘুম থেকে ওঠা।</li>
+                    <li><span class="font-bold text-green-500 mr-2">৩১.</span>রাত ৯:৩০-১০:৩০ এর মধ্যে ঘুমানো।</li>
+                    <li><span class="font-bold text-green-500 mr-2">৩২.</span>দৈনিক রুটিন ও To-Do List অনুসরণ।</li>
+                    <li><span class="font-bold text-green-500 mr-2">৩৩.</span>সাপ্তাহিক শরীরচর্চা ও নফল রোযা।</li>
+                    <li><span class="font-bold text-green-500 mr-2">৩৪.</span>মা-বাবার খেদমত ও পরিবারের প্রতি সহানুভূতি।</li>
+                    <li><span class="font-bold text-green-500 mr-2">৩৫.</span>নিজের ভুল স্বীকার ও সাপ্তাহিক মূল্যায়ন।</li>
+                </ul>
+                 <button id="openDosModal" class="text-center mt-4 text-sm text-blue-600 hover:underline cursor-pointer w-full">(এবং আরও ১৭টি ধারা...)</button>
+            </div>
+        </div>
+        
+        <div class="card mt-8">
+            <h3 class="text-2xl font-bold text-center mb-2">দৈনিক সময় বন্টন পরিকল্পনা</h3>
+            <p class="text-center text-gray-600 mb-6">আত্ম-উন্নয়নের জন্য প্রতিদিন বিভিন্ন ক্ষেত্রে নির্দিষ্ট সময় বরাদ্দ করা হয়েছে, যা এই চার্টে দেখানো হলো।</p>
+            <div class="w-full max-w-3xl mx-auto h-80">
+                <canvas id="timeAllocationChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card mt-8">
+            <h3 class="text-2xl font-bold text-center mb-6">দৈনিক আদর্শ রুটিন (নমুনা)</h3>
+             <div class="relative wrap overflow-hidden p-10 h-full">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">☀️</div>
+                        <div class="timeline-content"><h4 class="font-bold">ভোর ৩:৪৫</h4><p>ঘুম থেকে উঠে তাহাজ্জুদ, ফজর ও কুরআন তেলাওয়াত।</p></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📚</div>
+                        <div class="timeline-content"><h4 class="font-bold">সকাল ৬:০০ - দুপুর ১২:০০</h4><p>একাডেমিক পড়াশোনা এবং স্কিল ডেভেলপমেন্ট।</p></div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-icon">💼</div>
+                         <div class="timeline-content"><h4 class="font-bold">দুপুর ২:০০ - বিকাল ৫:০০</h4><p>যোহরের সালাত, দুপুরের খাবার, বিশ্রাম এবং ক্যারিয়ার প্রস্তুতি।</p></div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-icon">🏃‍♂️</div>
+                         <div class="timeline-content"><h4 class="font-bold">বিকাল ৫:০০ - সন্ধ্যা ৭:০০</h4><p>শরীরচর্চা, আসর ও মাগরিবের সালাত।</p></div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-icon">🌙</div>
+                         <div class="timeline-content"><h4 class="font-bold">রাত ১০:০০</h4><p>এশার সালাত, দিন মূল্যায়ন এবং ঘুম।</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card text-center mt-8">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600">🖐 অঙ্গীকার</h2>
+            <p class="text-lg leading-relaxed max-w-3xl mx-auto">
+                আমি, <strong>মোঃ সাকিব</strong>, উপরোক্ত ৫২টি ধারায় উল্লিখিত নিয়মগুলো আন্তরিকভাবে মেনে চলার অঙ্গীকার করছি। আমি জানি, এই চুক্তি ভঙ্গ করা মানে নিজের স্বপ্ন, আত্মসম্মান ও আল্লাহর সন্তুষ্টিকে অগ্রাহ্য করা। তাই আমি প্রতিদিন এই নীতিগুলো স্মরণ করবো এবং নিজেকে অনুশাসনের মধ্যে রাখবো।
+            </p>
+        </div>
+
+        <footer class="mt-12">
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-4"><h4 class="font-bold text-lg">✍️ চুক্তিকারী</h4><p class="mt-4">নাম: মোঃ সাকিব</p><div class="border-t-2 border-gray-400 mt-8 w-3/4 mx-auto"></div><p class="mt-2 text-sm text-gray-600">স্বাক্ষর</p></div>
+                <div class="p-4"><h4 class="font-bold text-lg">👥 সাক্ষী ১</h4><p class="mt-4">নাম: সাব্বির হোসেন (বন্ধু ও সহপাঠী)</p><div class="border-t-2 border-gray-400 mt-8 w-3/4 mx-auto"></div><p class="mt-2 text-sm text-gray-600">স্বাক্ষর</p></div>
+                <div class="p-4"><h4 class="font-bold text-lg">👥 সাক্ষী ২</h4><p class="mt-4">নাম: মোঃ সিয়াম (বন্ধু ও সহপাঠী)</p><div class="border-t-2 border-gray-400 mt-8 w-3/4 mx-auto"></div><p class="mt-2 text-sm text-gray-600">স্বাক্ষর</p></div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Prohibitions Modal -->
+    <div id="prohibitionsModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 hidden opacity-0">
+        <div class="modal-content bg-white rounded-lg shadow-xl p-6 m-4 max-w-2xl w-full relative max-h-[90vh] transform scale-95">
+            <button class="close-modal-btn absolute top-3 right-4 text-gray-500 hover:text-gray-900 text-3xl font-bold">&times;</button>
+            <h3 class="text-2xl font-bold text-red-600 mb-4">🔴 নিষেধাজ্ঞাসমূহ (সম্পূর্ণ তালিকা)</h3>
+            <div class="overflow-y-auto max-h-[70vh] pr-4">
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>গান, বাদ্যযন্ত্র, ও যেকোনো হারাম বিনোদন বর্জন করবো।</li>
+                    <li>পর্নোগ্রাফি ও অশ্লীল ভিডিও থেকে দূরে থাকবো।</li>
+                    <li>হস্তমৈথুন করা সম্পূর্ণ বর্জন করবো।</li>
+                    <li>অবৈধ প্রেম, চ্যাটিং বা সম্পর্ক থেকে নিজেকে বিরত রাখবো।</li>
+                    <li>মোবাইল আসক্তি কমিয়ে আনবো।</li>
+                    <li>TikTok, Reels, Shorts দেখা বন্ধ করবো।</li>
+                    <li>YouTube-এ অপ্রয়োজনীয় ভিডিও দেখা ত্যাগ করবো।</li>
+                    <li>ভিডিও/মোবাইল গেম খেলায় সময় নষ্ট করবো না।</li>
+                    <li>অপ্রয়োজনীয় আড্ডা ও ঘোরাঘুরি এড়িয়ে চলবো।</li>
+                    <li>রাত জাগা এবং দেরিতে ঘুমানো পরিহার করবো।</li>
+                    <li>ফজরের নামাজের সময় ঘুমিয়ে যাবো না।</li>
+                    <li>কক্ষনো গণতান্ত্রিক রাজনীতিতে যোগ দেবো না ।</li>
+                    <li>মিথ্যা, গীবত ও বদনাম করবো না।</li>
+                    <li>হিংসা, অহংকার ও রাগ নিয়ন্ত্রণ করবো।</li>
+                    <li>মা-বাবার অবাধ্যতা পরিহার করবো।</li>
+                    <li>সময় নষ্ট ও অলসতা ত্যাগ করবো।</li>
+                    <li>বাজে চিন্তা ও নেগেটিভ চিন্তা পরিহার করবো।</li>
+                    <li>অশ্লীল কনটেন্টে লাইক/কমেন্ট/শেয়ার করবো না।</li>
+                    <li>প্রেমময় গান-কবিতার প্রতি আকর্ষণ কমাবো।</li>
+                    <li>ঈমান দুর্বলকারী কনটেন্ট ও সঙ্গ ত্যাগ করবো।</li>
+                    <li>পরীক্ষায় অসততা করবো না।</li>
+                    <li>অনেক কাজ একসাথে শুরু করে অসমাপ্ত রাখবো না।</li>
+                    <li>নিজের দোষ অন্যের ওপর চাপাবো না।</li>
+                    <li>স্বাস্থ্য অবহেলা করবো না।</li>
+                    <li>আল্লাহর স্মরণ ও ইবাদতহীন দিন কাটাবো না।</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dos Modal -->
+    <div id="dosModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 hidden opacity-0">
+        <div class="modal-content bg-white rounded-lg shadow-xl p-6 m-4 max-w-2xl w-full relative max-h-[90vh] transform scale-95">
+            <button class="close-modal-btn absolute top-3 right-4 text-gray-500 hover:text-gray-900 text-3xl font-bold">&times;</button>
+            <h3 class="text-2xl font-bold text-green-600 mb-4">🟢 করণীয় ও উত্তম অভ্যাসসমূহ (সম্পূর্ণ তালিকা)</h3>
+            <div class="overflow-y-auto max-h-[70vh] pr-4">
+                <ol start="26" class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>পাঁচ ওয়াক্ত সালাত নিয়মিত আদায় করবো।</li>
+                    <li>প্রতিদিন কুরআন তেলাওয়াত করবো ও অর্থ বুঝে পড়বো।</li>
+                    <li>দোয়া ও জিকিরের অভ্যাস গড়বো।</li>
+                    <li>প্রতিদিন স্কিল ডেভেলপমেন্টে ২-৪ ঘণ্টা ব্যয় করবো।</li>
+                    <li>প্রতিদিন একাডেমিক পড়াশোনায় ২-৩ ঘণ্টা ব্যয় করবো।</li>
+                    <li>বিসিএস ও ক্যারিয়ার প্রস্তুতিতে ২-৩ ঘণ্টা ব্যয় করবো।</li>
+                    <li>প্রতিদিন সকালে ফজরের সালাতের আযানের ৩০ মিনিট পূর্বে ঘুম থেকে উঠবো।</li>
+                    <li>রাত ০৯:৩০–১০:৩০ এর মধ্যে ঘুমাবো।</li>
+                    <li>দৈনিক রুটিন ও To-Do List ফলো করবো।</li>
+                    <li>প্রতি সপ্তাহে একদিন আত্মসমালোচনায় সময় দেবো।</li>
+                    <li>সময়মতো ঘুম, খাওয়া ও বিশ্রাম নেবো।</li>
+                    <li>ফোকাসড কাজের অভ্যাস গড়বো।</li>
+                    <li>মোবাইল ব্যবহার দিনে সর্বোচ্চ ২ ঘণ্টায় সীমাবদ্ধ রাখবো।</li>
+                    <li>সপ্তাহে ২ দিন সীমিত সময়ের (৩০-৬০ মিনিট) চায়ের আড্ডা করবো।</li>
+                    <li>সপ্তাহে অন্তত ৩ দিন শরীরচর্চা করবো।</li>
+                    <li>নফল রোযার (সোম ও বৃহস্পতিবার) অভ্যাস করবো।</li>
+                    <li>আত্মউন্নয়নমূলক বই পড়বো।</li>
+                    <li>মা-বাবার খেদমত করবো।</li>
+                    <li>ভাই-বোনদের সহানুভূতিতে সাহায্য করবো।</li>
+                    <li>ভালো ও নৈতিক বন্ধু নির্বাচনে সচেতন থাকবো।</li>
+                    <li>ইসলামী মাহফিলে অংশগ্রহণ করবো।</li>
+                    <li>পরিকল্পনা অনুযায়ী কাজ শেষ করবো।</li>
+                    <li>নিজের ভুল স্বীকার করে তা সংশোধনের চেষ্টা করবো।</li>
+                    <li>সাপ্তাহিক ও মাসিক পরিকল্পনা রিভিউ করবো।</li>
+                    <li>শুক্রবারের খুতবা ও জুমা সালাতে মনোযোগ রাখবো।</li>
+                    <li>সকল কাজে নিয়ত ঠিক করবো – আল্লাহর সন্তুষ্টি।</li>
+                    <li>প্রতিরাতে নিজের দিন মূল্যায়ন করবো: “আজ আমি কতটা আত্মউন্নয়ন করেছি?”</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tooltipCallback = { plugins: { tooltip: { callbacks: { title: function(tooltipItems) { const item = tooltipItems[0]; let label = item.chart.data.labels[item.dataIndex]; return Array.isArray(label) ? label.join(' ') : label; } } } } };
+        const commitmentBalanceCtx = document.getElementById('commitmentBalanceChart').getContext('2d');
+        new Chart(commitmentBalanceCtx, { type: 'doughnut', data: { labels: ['নিষেধাজ্ঞাসমূহ', 'করণীয় ও উত্তম অভ্যাসসমূহ'], datasets: [{ label: 'ধারার সংখ্যা', data: [25, 27], backgroundColor: ['#ef4444', '#22c55e'], borderColor: ['#f8fafc', '#f8fafc'], borderWidth: 4, hoverOffset: 8 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 14, family: "'Hind Siliguri', sans-serif" } } }, tooltip: tooltipCallback.plugins.tooltip } } });
+        const timeAllocationCtx = document.getElementById('timeAllocationChart').getContext('2d');
+        new Chart(timeAllocationCtx, { type: 'bar', data: { labels: ['স্কিল ডেভেলপমেন্ট', 'একাডেমিক পড়াশোনা', 'বিসিএস ও ক্যারিয়ার প্রস্তুতি', 'শরীরচর্চা (সাপ্তাহিক গড়)'], datasets: [{ label: 'দৈনিক আনুমানিক ঘণ্টা', data: [3, 2.5, 2.5, 0.5], backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(153, 102, 255, 0.6)'], borderColor: ['rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 206, 86, 1)', 'rgba(153, 102, 255, 1)'], borderWidth: 1 }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true, title: { display: true, text: 'ঘণ্টা', font: { size: 14, family: "'Hind Siliguri', sans-serif" } } }, y: { ticks: { font: { size: 14, family: "'Hind Siliguri', sans-serif" } } } }, plugins: { legend: { display: false }, tooltip: tooltipCallback.plugins.tooltip } } });
+
+        const prohibitionsModal = document.getElementById('prohibitionsModal');
+        const dosModal = document.getElementById('dosModal');
+        const openProhibitionsBtn = document.getElementById('openProhibitionsModal');
+        const openDosBtn = document.getElementById('openDosModal');
+        const closeButtons = document.querySelectorAll('.close-modal-btn');
+
+        const openModal = (modal) => {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            }, 10);
+        };
+
+        const closeModal = (modal) => {
+            modal.classList.add('opacity-0');
+            modal.querySelector('.modal-content').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        };
+        
+        openProhibitionsBtn.addEventListener('click', () => openModal(prohibitionsModal));
+        openDosBtn.addEventListener('click', () => openModal(dosModal));
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                closeModal(prohibitionsModal);
+                closeModal(dosModal);
+            });
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target === prohibitionsModal) {
+                closeModal(prohibitionsModal);
+            }
+            if (event.target === dosModal) {
+                closeModal(dosModal);
+            }
+        });
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal(prohibitionsModal);
+                closeModal(dosModal);
+            }
+        });
+
+    </script>
+</body>
+</html>
